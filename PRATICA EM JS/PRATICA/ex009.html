@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAÍS QUE MORA</title>
+</head>
+<style>
+    body{
+        background-color: brown;
+        color: blue;
+    }
+</style>
+<body>
+    <h1>QUAL O PAÍS QUE NASCEU</h1>
+    Qual o país que vc mora: <input type="text" name="txt" id="txt">
+    <input type="button" value="Verificar" onclick="verf()">
+    <div id="res">
+
+    </div>
+    <script>
+        function verf(){
+            var pais = window.document.getElementById('txt')
+            var res = window.document.getElementById('res')
+            var p = pais.value
+            res.innerHTML = `<p>Pías de nascimento: <strong>${p}</strong></p>`
+            if (p == 'Brasil'){
+                res.innerHTML += `<p>Você é <strong>BRASILEIRO!</strong></p>`
+            }else{
+                res.innerHTML += `<p>Você é <strong>ESTRANGEIRO!</strong></p>`
+            }   
+            
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primeiros passos com Live Serve</title>
+</head>
+<style>
+    body{
+        background-color: rgb(0, 119, 255);
+        color: white;
+        font: normal 20pt Ariel;
+    }
+    h1{
+        color: rgb(9, 1, 15);
+    }
+</style>
+<body>
+   <h1>Iniciando com o DOM</h1>
+   <p>Aqui vai o resultado</p>
+   <p>Aprendendo usar o <strong>DOM</strong></p>
+   <div>Clique em mim</div>
+<script>
+    var p1 = window.document.getElementsByTagName('p')[1]
+    var p2 = window.document.getElementsByTagName('p')[1]
+    window.document.write(`O resultado: ${p1.innerText}</br>`)
+    window.document.write('O resultado: ' + p2.innerText)
+    p1.style.color = 'black' //esse comando muda a cor do <p>...
+    
+</script>
+
+</body>
+</html>

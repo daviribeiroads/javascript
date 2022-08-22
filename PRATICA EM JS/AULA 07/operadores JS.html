@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: aqua;
+            color: rgb(22, 22, 19);
+            font: normal 20pt Ariel; // aumenta o tamanho da fonte em geral pq esta dentro do corpo
+            
+        }
+        h1{
+            color: rgb(24, 228, 34);
+            
+        }
+        h2,h3{
+            color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <h1>Praticando!</h1>
+    <h2>Segundo titulo!</h2>
+    <h3>Terceiro titulo</h3>
+    <p>Comecei a praticar.</p>
+    <script>
+        var n1 = Number(window.prompt('Digite um número: '))
+        var n2 = Number(window.prompt('Digite o segundo número: '))
+        var s = n1 + n2
+        document.write(`A soma dos valores digitado: ${n1+n2}</br>`)
+        var nome = window.prompt('Qual o seu nome?')
+        document.write(`Olá <strong>${nome}</strong>!</br></br>`)
+        document.write(`Nome em maiúsculo: <strong>${nome.toUpperCase()}</strong>!</br></br>`)
+        document.write(`Nome menúsculo: <strong>${nome.toLowerCase()}</strong>!`)
+        
+    </script>
+</body>
+</html>
