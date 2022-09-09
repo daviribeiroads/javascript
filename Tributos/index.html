@@ -18,7 +18,7 @@
             <div class="fator">
                 <div>
                     <label>Presunção</label>
-                    <input type="number" value="calcular" id="pres" placeholder="presunção">
+                    <input type="number"  id="pres" placeholder="presunção">
                 </div>
                 <div>
                     <label>IRRF</label>
@@ -43,7 +43,7 @@
                 </div>
                 <div>
                     <label>Trimestre</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" id="trimestre">-</div>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" value="calcular" id="trimestre">-</div>
                 </div>
                 
             </div>
@@ -64,11 +64,11 @@
                 <h3>MÊS 2</h3>
                 <div>
                     <label>PIS</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" id="pis_mes1">-</div>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" id="pis_mes2">-</div>
                 </div>
                 <div>
                     <label>Cofins</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" id="cofins_mes1">-</div>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" id="cofins_mes2">-</div>
                 </div>
                 
             </div>
@@ -76,21 +76,22 @@
                 <h3>MÊS 3</h3>
                 <div>
                     <label>PIS</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" id="pis_mes1">-</div>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" id="pis_mes3">-</div>
                 </div>
                 <div>
                     <label>Cofins</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" id="cofins_mes1">-</div>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" id="cofins_mes3">-</div>
                 </div>
                 <div>
                     <label>CSLL</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" id="csll_mes1">-</div>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" id="csll_mes3">-</div>
                 </div>
                 <div>
                     <label>IRPJ</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" id="irpj_mes1">-</div>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" id="irpj_mes3">-</div>
                 </div>
-                               
+                <div id="teste2">-</div>  
+                 <div id="teste">-</div>              
             </div>
         </div>
     </main>
@@ -99,24 +100,28 @@
     </footer>
     <script>
         function Cal(){
-            let presuncao = document.getElementById("pres")
-            let presumido = Number(pres.value)
+            let presumido_a = Number(pres.value)
+            let retencao_a = Number(retencao.value)
             let mes_1 = Number(tab1.value)
             let mes_2 = Number(tab2.value)
             let mes_3 = Number(tab3.value)
-            trimestre_t = (mes_1+mes_2+mes_3).toFixed(2).replace('.',',')
-            pis_1 = (mes_1 * 0.0065).toFixed(2).replace('.',',')
-            cofins_1 = (mes_1 * 0.03).toFixed(2).replace('.',',')
-            csll_1 = (mes_1 * 0,09).toFixed(2).replace('.',',')
-            irpj_1 = (mes_1 * 0.15).toFixed(2).replace('.',',')
-            trimestre.innerHTML = `${trimestre_t}`
-                
-                if(trimestre_t < 60000){
-                pis_mes1.innerHTML = `${pis_1}`
-                cofins_mes1.innerHTML = `${cofins_1}`
-                csll_mes1.innerHTML = `${csll_1}`
-                irpj_mes1.innerHTML = `${irpj_1}`
-                }
+            let tri_t = (mes_1 + mes_2 + mes_3)
+            let aliquota = presumido_a / 100
+            trimestre.innerHTML = `${tri_t}`
+            /*pis_1 = (mes_1 * 0.0065).toFixed(2).replace('.',',')
+            cofins_1 = (mes_1 * 0.03).toFixed(2).replace('.',',')*/
+            csll_1 = (tri_t * 0,09).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+            irpj_1 = (tri_t * 0.15).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+
+            if(tri_t <= 60000,01){
+                irpj_mes3.innerHTML = `${irpj_1}`
+                csll_mes3.innerHTML = `${csll_1}`
+            }else{
+                irpj_mes3.innerHTML = `${irpj_1}`
+                csll_mes3.innerHTML = `${csll_1}`
+            }
+           
+           
         }    
             
             
