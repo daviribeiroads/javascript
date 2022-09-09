@@ -17,9 +17,13 @@
         <div class="container">
             <div class="fator">
                 <div>
-                    <label>Presunção</label>
-                    <input type="number"  id="pres" placeholder="presunção">
+                    <label>Presunção IRPJ</label>
+                    <input type="number"  id="pres" placeholder="presunção1">
                 </div>
+                    <div>
+                        <label>Presunção CSLL</label>
+                        <input type="number"  id="pres2" placeholder="presunção2">
+                    </div>
                 <div>
                     <label>IRRF</label>
                     <input type="number" value="calcular" id="retencao" placeholder="irrf">
@@ -90,8 +94,7 @@
                     <label>IRPJ</label>
                     <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" id="irpj_mes3">-</div>
                 </div>
-                <div id="teste2">-</div>  
-                 <div id="teste">-</div>              
+                              
             </div>
         </div>
     </main>
@@ -101,25 +104,39 @@
     <script>
         function Cal(){
             let presumido_a = Number(pres.value)
+            let presumido_b = Number(pres2.value)
             let retencao_a = Number(retencao.value)
             let mes_1 = Number(tab1.value)
             let mes_2 = Number(tab2.value)
             let mes_3 = Number(tab3.value)
             let tri_t = (mes_1 + mes_2 + mes_3)
             let aliquota = presumido_a / 100
+            let aliquota2 = presumido_b / 100
             trimestre.innerHTML = `${tri_t}`
-            /*pis_1 = (mes_1 * 0.0065).toFixed(2).replace('.',',')
-            cofins_1 = (mes_1 * 0.03).toFixed(2).replace('.',',')*/
-            csll_1 = (tri_t * 0,09).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
-            irpj_1 = (tri_t * 0.15).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+            pis_3 = (mes_3 * 0.0065).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+            cofins_3 = (mes_3 * 0.03).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+            csll_3 = ((tri_t * aliquota2)*0.09).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+            irpj_3 = (((tri_t * aliquota)-retencao_a)*0.15).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
 
-            if(tri_t <= 60000,01){
+            pis_1 = (mes_1 * 0.0065).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+            cofins_1 = (mes_1 * 0.03).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+            
+            pis_2 = (mes_2 * 0.0065).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+            cofins_2 = (mes_2 * 0.03).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+
+            if(tri_t <= 60000){
+                pis_mes1.innerHTML = `${pis_1}`
+                cofins_mes1.innerHTML = `${cofins_1}`
+                pis_mes2.innerHTML = `${pis_2}`
+                cofins_mes2.innerHTML = `${cofins_2}`
+                pis_mes3.innerHTML = `${pis_3}`
+                cofins_mes3.innerHTML = `${cofins_3}`
+                irpj_mes3.innerHTML = `${irpj_3}`
+                csll_mes3.innerHTML = `${csll_3}`
+            }/*else{
                 irpj_mes3.innerHTML = `${irpj_1}`
                 csll_mes3.innerHTML = `${csll_1}`
-            }else{
-                irpj_mes3.innerHTML = `${irpj_1}`
-                csll_mes3.innerHTML = `${csll_1}`
-            }
+            }*/
            
            
         }    
