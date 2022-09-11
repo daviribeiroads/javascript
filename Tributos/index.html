@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tributos</title>
     <link rel="stylesheet" href="style/style.css">
+    <link rel="shortcut icon" href="imagen/favicon.png" type="image/x-icon">
+    <script src="java.js"></script>
 </head>
 <body>
     <header>
@@ -15,14 +17,19 @@
     </header>
     <main>
         <div class="container">
+            <div id="teste"></div>
             <div class="fator">
                 <div>
-                    <label>Presunção IRPJ</label>
-                    <input type="number"  id="pres" placeholder="presunção1">
+                    <abbr title="usar alíquota 1,6 - 8 - 16 ou 32">
+                        <label>Presunção IRPJ</label>
+                        <input type="number" onkeyup="" id="pres" placeholder="presunção1">
+                    </abbr>
                 </div>
                     <div>
-                        <label>Presunção CSLL</label>
-                        <input type="number"  id="pres2" placeholder="presunção2">
+                        <abbr title="Usar alíquota 12">
+                            <label>Presunção CSLL</label>
+                            <input type="number"  id="pres2" placeholder="presunção2">
+                        </abbr>
                     </div>
                 <div>
                     <label>IRRF</label>
@@ -94,7 +101,7 @@
                     <label>IRPJ</label>
                     <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" id="irpj_mes3">-</div>
                 </div>
-                              
+                    
             </div>
         </div>
     </main>
@@ -109,37 +116,72 @@
             let mes_1 = Number(tab1.value)
             let mes_2 = Number(tab2.value)
             let mes_3 = Number(tab3.value)
-            
+            //serviço//
             let tri_t = (mes_1 + mes_2 + mes_3)
             let aliquota = presumido_a / 100
+            let pre_trimestre = tri_t * aliquota
             let aliquota2 = presumido_b / 100
             trimestre.innerHTML = `${tri_t}`
-            pis_3 = (mes_3 * 0.0065).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
-            cofins_3 = (mes_3 * 0.03).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
-            csll_3 = ((tri_t * aliquota2)*0.09).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
-            irpj_3 = (((tri_t * aliquota)-retencao_a)*0.15).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+            let pis_3 = (mes_3 * 0.0065).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+            let cofins_3 = (mes_3 * 0.03).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+            let csll_3 = ((tri_t * aliquota)*0.09).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+            let irpj_3 = (((tri_t * aliquota)*0.15)-retencao_a).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
 
-            pis_1 = (mes_1 * 0.0065).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
-            cofins_1 = (mes_1 * 0.03).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+            let pis_1 = (mes_1 * 0.0065).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+            let cofins_1 = (mes_1 * 0.03).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
             
-            pis_2 = (mes_2 * 0.0065).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
-            cofins_2 = (mes_2 * 0.03).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+            let pis_2 = (mes_2 * 0.0065).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+            let cofins_2 = (mes_2 * 0.03).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
 
-            if(tri_t <= 60000){
-                pis_mes1.innerHTML = `${pis_1}`
-                cofins_mes1.innerHTML = `${cofins_1}`
-                pis_mes2.innerHTML = `${pis_2}`
-                cofins_mes2.innerHTML = `${cofins_2}`
-                pis_mes3.innerHTML = `${pis_3}`
-                cofins_mes3.innerHTML = `${cofins_3}`
-                irpj_mes3.innerHTML = `${irpj_3}`
-                csll_mes3.innerHTML = `${csll_3}`
-            }/*else{
-                irpj_mes3.innerHTML = `${irpj_1}`
-                csll_mes3.innerHTML = `${csll_1}`
-            }*/
-           
-           
+            //adicional//
+
+            let adicional = ((((tri_t * aliquota)*0.15)-retencao_a)+((pre_trimestre - 60000)*0.10)).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+
+            //comercio//
+            let csll_4 = ((tri_t * aliquota2)*0.09).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'}) 
+            
+            if(presumido_b == 12 && pre_trimestre <= 60000){
+                    pis_mes1.innerHTML = `${pis_1}`
+                    cofins_mes1.innerHTML = `${cofins_1}`
+                    pis_mes2.innerHTML = `${pis_2}`
+                    cofins_mes2.innerHTML = `${cofins_2}`
+                    pis_mes3.innerHTML = `${pis_3}`
+                    cofins_mes3.innerHTML = `${cofins_3}`
+                    irpj_mes3.innerHTML = `${irpj_3}`
+                    csll_mes3.innerHTML = `${csll_4}`
+            }else if(presumido_b == 12 && pre_trimestre > 60000){
+                    pis_mes1.innerHTML = `${pis_1}`
+                    cofins_mes1.innerHTML = `${cofins_1}`
+                    pis_mes2.innerHTML = `${pis_2}`
+                    cofins_mes2.innerHTML = `${cofins_2}`
+                    pis_mes3.innerHTML = `${pis_3}`
+                    cofins_mes3.innerHTML = `${cofins_3}`
+                    irpj_mes3.innerHTML = `${adicional}`
+                    csll_mes3.innerHTML = `${csll_4}`
+                    alert `teve adicional de IRPJ`
+            }
+            
+            else if(pre_trimestre <= 60000){
+                    pis_mes1.innerHTML = `${pis_1}`
+                    cofins_mes1.innerHTML = `${cofins_1}`
+                    pis_mes2.innerHTML = `${pis_2}`
+                    cofins_mes2.innerHTML = `${cofins_2}`
+                    pis_mes3.innerHTML = `${pis_3}`
+                    cofins_mes3.innerHTML = `${cofins_3}`
+                    irpj_mes3.innerHTML = `${irpj_3}`
+                    csll_mes3.innerHTML = `${csll_3}`
+                }else{
+                    pis_mes1.innerHTML = `${pis_1}`
+                    cofins_mes1.innerHTML = `${cofins_1}`
+                    pis_mes2.innerHTML = `${pis_2}`
+                    cofins_mes2.innerHTML = `${cofins_2}`
+                    pis_mes3.innerHTML = `${pis_3}`
+                    cofins_mes3.innerHTML = `${cofins_3}`
+                    irpj_mes3.innerHTML = `${adicional}`
+                    csll_mes3.innerHTML = `${csll_3}`
+                    alert `teve adicional de IRPJ`
+            }
+            
         }    
             
             
