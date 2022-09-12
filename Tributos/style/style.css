@@ -27,7 +27,7 @@ ul > li {
     
 .menu > ul:hover li {
     display: block;
-    background-color: #7f7f7f;
+    background-color: aliceblue;
     padding: 8px;
 }
 
@@ -36,7 +36,11 @@ strong {
 }
 
 li {
-    margin-top: 6px;
+    margin-top: 3px;
+}
+
+:hover > li {
+    background-color: aliceblue;
 }
 
 a {
@@ -45,7 +49,7 @@ a {
 
 a:hover {
     text-decoration: underline;
-    color: white;
+    color: rgb(13, 13, 77);
     
 }
 
