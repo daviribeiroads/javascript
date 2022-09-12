@@ -27,7 +27,7 @@ ul > li {
     
 .menu > ul:hover li {
     display: block;
-    background-color: rgb(177, 210, 239);
+    background-color: rgb(170, 199, 224);
     padding: 8px;
     
 }
