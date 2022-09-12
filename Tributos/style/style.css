@@ -39,10 +39,6 @@ li {
     margin-top: 3px;
 }
 
-:hover > li {
-    background-color: aliceblue;
-}
-
 a {
     text-decoration: none;
 }
@@ -50,6 +46,7 @@ a {
 a:hover {
     text-decoration: underline;
     color: rgb(13, 13, 77);
+    font-size: 20px;
     
 }
 
