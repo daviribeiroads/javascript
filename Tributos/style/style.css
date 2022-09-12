@@ -18,16 +18,17 @@ header{
 
 .menu {
     position: absolute;
-    margin: 60px;
-    padding: 10px;
+    margin: 5%;
 }    
 
-.menu > ul > li {
+ul > li {
     display: none;
 }
     
-.menu > ul > li:hover {
-    
+.menu > ul:hover li {
+    display: block;
+    background-color: #7f7f7f;
+    padding: 8px;
 }
 
 strong {
@@ -35,12 +36,17 @@ strong {
 }
 
 li {
-    padding-top: 25px;
-    
+    margin-top: 6px;
 }
 
-li:hover {
+a {
+    text-decoration: none;
+}
 
+a:hover {
+    text-decoration: underline;
+    color: white;
+    
 }
 
 h1 {
