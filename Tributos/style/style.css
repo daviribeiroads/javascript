@@ -27,8 +27,9 @@ ul > li {
     
 .menu > ul:hover li {
     display: block;
-    background-color: aliceblue;
+    background-color: rgb(177, 210, 239);
     padding: 8px;
+    
 }
 
 strong {
@@ -41,13 +42,15 @@ li {
 
 a {
     text-decoration: none;
+    color: white;
 }
 
 a:hover {
     text-decoration: underline;
     color: rgb(13, 13, 77);
-    font-size: 20px;
-    
+    font-size: 18px;
+    transition: all 0.3s;
+        
 }
 
 h1 {
