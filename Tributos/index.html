@@ -7,17 +7,21 @@
     <title>Tributos</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="shortcut icon" href="imagen/favicon.png" type="image/x-icon">
-    <script src="java.js"></script>
 </head>
 <body>
     <header>
+        <div class="menu">
+            <ul><strong>MENU</strong>
+                <li>Receita</li>
+                <li>DARF Online</li>
+            </ul>
+        </div>
         <div class="titulo">
             <h1>TRIBUTOS FEDERAIS</h1>
         </div>
     </header>
     <main>
         <div class="container">
-            <div id="teste"></div>
             <div class="fator">
                 <div>
                     <abbr title="usar alíquota 1,6 - 8 - 16 ou 32">
@@ -38,6 +42,9 @@
                 <div>
                     <button type="number" id="calcular" onclick="Cal()">CALCULAR</button>
                 </div>
+                <div id="clean">
+                    <button onclick="location.reload()">limpar</button>
+                </div>
             </div>
             <div class="tributos">
                 <div>
@@ -54,7 +61,7 @@
                 </div>
                 <div>
                     <label>Trimestre</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" value="calcular" id="trimestre">-</div>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" value="calcular" id="trimestre">-</div>
                 </div>
                 
             </div>
@@ -63,11 +70,11 @@
                 <h3>MÊS 1</h3>
                 <div>
                     <label>PIS</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" id="pis_mes1">-</div>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" id="pis_mes1">-</div>
                 </div>
                 <div>
                     <label>Cofins</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" id="cofins_mes1">-</div>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;background-color: white;" id="cofins_mes1">-</div>
                 </div>
                 
             </div>
@@ -75,11 +82,11 @@
                 <h3>MÊS 2</h3>
                 <div>
                     <label>PIS</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" id="pis_mes2">-</div>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" id="pis_mes2">-</div>
                 </div>
                 <div>
                     <label>Cofins</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" id="cofins_mes2">-</div>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" id="cofins_mes2">-</div>
                 </div>
                 
             </div>
@@ -87,19 +94,19 @@
                 <h3>MÊS 3</h3>
                 <div>
                     <label>PIS</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" id="pis_mes3">-</div>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" id="pis_mes3">-</div>
                 </div>
                 <div>
                     <label>Cofins</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" id="cofins_mes3">-</div>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" id="cofins_mes3">-</div>
                 </div>
                 <div>
                     <label>CSLL</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" id="csll_mes3">-</div>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" id="csll_mes3">-</div>
                 </div>
                 <div>
                     <label>IRPJ</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;" id="irpj_mes3">-</div>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" id="irpj_mes3">-</div>
                 </div>
                     
             </div>
@@ -158,7 +165,7 @@
                     cofins_mes3.innerHTML = `${cofins_3}`
                     irpj_mes3.innerHTML = `${adicional}`
                     csll_mes3.innerHTML = `${csll_4}`
-                    alert `teve adicional de IRPJ`
+                    alert `Com adicional de IRPJ!`
             }
             
             else if(pre_trimestre <= 60000){
@@ -179,7 +186,7 @@
                     cofins_mes3.innerHTML = `${cofins_3}`
                     irpj_mes3.innerHTML = `${adicional}`
                     csll_mes3.innerHTML = `${csll_3}`
-                    alert `teve adicional de IRPJ`
+                    alert `Com adicional de IRPJ!`
             }
             
         }    
